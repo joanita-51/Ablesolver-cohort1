@@ -1,0 +1,18 @@
+Test best practices
+=========================
+
+Organising tests
+========================
+1. It's a good practice to organising tests
+2. We can put the tests in a directory named tests. If the directory doesn't exixt in our project we can create it and jest will automatically find it.
+3.Each file with the name *.test.ts is referred to a test suite ans each of such a file should be moved to tests directory
+4.We can further subdive the tests directory into int and unit subdirectories to represent integration and unit tests respectively
+
+What is a unit test?
+Is a verification of the functionality of a particular unit in a code or program. This commonly refers to testing a particular function.
+
+*What is an integration test?
+Is a verification of the functionality of different units or functions that depend on each other. This commonly refers to testing two or more functions 
+that rely /depend on each other.
+
+*There are many other tests especially eze or end to end or ui tests, acceptance tests etc..
