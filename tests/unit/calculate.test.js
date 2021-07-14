@@ -1,6 +1,6 @@
 //Destructure
-const calculate =require('./calculate') //Method 1
-const {sum, subtract} = require ('./calculate') //Method 2
+const calculate =require('../../calculate') //Method 1
+const {sum, subtract} = require ('../../calculate') //Method 2
 
 //Test or Expect matchers
 //Assertions
