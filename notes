@@ -4,7 +4,7 @@ Test best practices
 Organising tests
 ========================
 1. It's a good practice to organising tests
-2. We can put the tests in a directory named tests. If the directory doesn't exixt in our project we can create it and jest will automatically find it.
+2. We can put the tests in a directory named tests. If the directory doesn't exist in our project we can create it and jest will automatically find it.
 3.Each file with the name *.test.ts is referred to a test suite ans each of such a file should be moved to tests directory
 4.We can further subdive the tests directory into int and unit subdirectories to represent integration and unit tests respectively.
 5.To run all the test suites we run the npm test
