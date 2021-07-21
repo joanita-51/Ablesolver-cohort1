@@ -12,7 +12,7 @@ date = new Date()
 localDate = date.toLocaleDateString()
 localTime = date.toLocaleTimeString()
 
-let userInfo = "userInfo=Nakityo Joanita, Windows 10, 4GB RAM; "
+let userInfo = "userInfo=Nakityo Joanita, Windows 10, 4GB RAM; " 
 
 document.cookie = userInfo
 
