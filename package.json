@@ -1,0 +1,19 @@
+{
+  "name": "session8",
+  "version": "1.0.0",
+  "description": "Events",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JOANITA-51/Ablesolver-cohort1.git"
+  },
+  "author": "Joanita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JOANITA-51/Ablesolver-cohort1/issues"
+  },
+  "homepage": "https://github.com/JOANITA-51/Ablesolver-cohort1#readme"
+}
