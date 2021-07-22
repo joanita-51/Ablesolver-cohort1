@@ -45,9 +45,9 @@ let setGetItNowTime = () => {
 //Like cookies, sessionStorage is also a key/value pair but difference is in the use of a sessionStorage function and we can't set expiry time for the sessionStorage data.
 //Once the web page is closed the data stored with sessionStorage is removed/delete unless it's set when the web page is reloaded.
 
-sessionStorage.setItem('name', 'David')
-sessionStorage.setItem('town', 'Kansanga')
-sessionStorage.setItem('town', 'Bunga')
+sessionStorage.setItem('name', 'Joanita')
+sessionStorage.setItem('town', 'Lyantonde')
+sessionStorage.setItem('town', 'Kamuli')
 
 sessionStorage.removeItem('town')
 
@@ -57,7 +57,7 @@ console.log(myName)
 //3. localStorage
 // It is quite similar to sessionStorage but here the data is persisted in the user's browser even when it get's closed. So whenever you visit the same the website that set the localStorage the data will be available until explicitly deleted.
 
-localStorage.setItem('name', 'David Wampamba')
+localStorage.setItem('name', 'Joanita Nakityo')
 localStorage.removeItem('name')
 localStorage.setItem('city', 'Kampala')
 let city = localStorage.getItem('city')
@@ -71,3 +71,4 @@ console.log(city);
 //Imagine you have a key called invoice and you to store invoice about it. 
 //Such as the invoice number, amount, items
 // We introduce JSON.
+
