@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JOANITA-51/Ablesolver-cohort1/issues"
   },
-  "homepage": "https://github.com/JOANITA-51/Ablesolver-cohort1#readme"
+  "homepage": "https://github.com/JOANITA-51/Ablesolver-cohort1#readme",
+  "dependencies": {
+    "jest": "^27.0.6"
+  }
 }
