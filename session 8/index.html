@@ -7,8 +7,23 @@
     <title>Events and Forms Day1</title>
 </head>
 <body>
-    <label for="message">message</label>
-    <input onfocus="notify()" type="text" id="message" placeholder="Enter your message"/>
+    <label for="message">
+        Message
+    </label>
+
+    <!-- <input
+        onBlur="validateInput()"
+        type="text"
+        id="message"
+        placeholder="Enter your message"
+    /> -->
+    <input
+        type="text"
+        id="message"
+        placeholder="Enter your message"
+    />
+    
+    <p id="error-msg">Make sure your input is correct</p>
     <script src="src/script.js"></script>
 </body>
 </html>
