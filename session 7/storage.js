@@ -71,4 +71,83 @@ console.log(city);
 //Imagine you have a key called invoice and you to store invoice about it. 
 //Such as the invoice number, amount, items
 // We introduce JSON.
+let invoices = [
+  {
+    id: 450,
+    to: "Jess Rabourn",
+    from: "David Wampamba",
+    items: [
+      {
+        name: "Home page",
+        desc: "Home page redesign",
+        amount: 145,
+      },
+      {
+        name: "Survey Form",
+        desc: "The survey for 2021 Expanded Access",
+        amount: 320,
+      },
+    ],
+  },
+  {
+    id: 451,
+    to: "Julius",
+    from: "David Wampamba",
+    items: [
+      {
+        name: "Many pages",
+        desc: "Patching errors",
+        amount: 450,
+      }
+    ],
+  },
+];
+
+let invoicesJSON = JSON.stringify(invoices)
+localStorage.setItem("invoices", invoicesJSON);
+
+let myInvoices = localStorage.getItem("invoices");
+document.querySelector('#jsonholder').innerText = myInvoices
+
+let jsonConverted = JSON.parse(myInvoices)
+
+// import persons from './data.json'
+// console.log(persons)
+
+document.getElementById("invoice-items").innerHTML = `
+<p>ID#: ${jsonConverted[0].id}</p>
+<p>To: ${jsonConverted[0].to}</p>
+<p>From: ${jsonConverted[0].from}</p>
+<table cellpadding="2" border="1" >
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>${jsonConverted[0]["items"][0]["name"]}</td>
+            <td>${jsonConverted[0]["items"][0]["desc"]}</td>
+            <td>${jsonConverted[0]["items"][0]["amount"]}</td>
+        </tr>
+        <tr>
+            <td>${jsonConverted[0]["items"][1]["name"]}</td>
+            <td>${jsonConverted[0]["items"][1]["desc"]}</td>
+            <td>${jsonConverted[0]["items"][1]["amount"]}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Total</th>
+            <th colspan="2">$${
+              jsonConverted[0]["items"][0]["amount"] +
+              jsonConverted[0]["items"][1]["amount"]
+            }USD</th>
+        </tr>
+    </tfoot>
+</table>
+`;
+// console.log(jsonConverted)
 
