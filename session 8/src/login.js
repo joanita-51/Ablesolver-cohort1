@@ -45,6 +45,7 @@ let doLoginOnClick = () => {
     return true
 }
 
-// module.exports = {
-//     doLogin
-// }
+ module.exports = {
+    doLoginOnSumbit,
+    doLoginOnClick
+ }
