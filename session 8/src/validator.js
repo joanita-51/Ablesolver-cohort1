@@ -1,6 +1,6 @@
   
-const CHECK_EMPTY = (event, length=8) => {
-    const ELEMENT = event.target
+const CHECK_EMPTY = (event = null, element =null, length=8) => {
+    const ELEMENT = element !== null? element : event.target
     if (ELEMENT.value == '' || ELEMENT.value == null) {
         ELEMENT.classList.add('is-invalid')
         // alert('Field required')
@@ -13,7 +13,7 @@ const CHECK_EMPTY = (event, length=8) => {
         return false
     }
 
-    event.target.classList.remove("is-invalid");
+    element.classList.remove("is-invalid");
     return true
 
 }

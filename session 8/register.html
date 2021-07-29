@@ -10,10 +10,10 @@
 <body>
   <section class="container">
       <h1>Register now</h1>
-    <form>
+    <form id="register-form" onsubmit="handleSubmit(event)">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" onblur="CHECK_EMPTY(event, 16)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+          <label for="useremail" class="form-label">Email address</label>
+          <input type="email" onblur="CHECK_EMPTY(event,null, 16)" class="form-control" id="useremail" aria-describedby="emailHelp" required>
           <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div class="mb-3">
