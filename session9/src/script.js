@@ -8,6 +8,10 @@ fetch("https://jsonplaceholder.typicode.com/todos")
 
       if (todos && todos.length>0){
           todos.forEach(todo => { //explain what this does
+            /**
+             * AT every iteration the todo is like below
+             * todo ={`userId`:1, 'id':1, 'title':'title', 'complete':false}
+             */
               generatedHTMLRows += `
               <tr>
                 <td>${todo.id}</td>
