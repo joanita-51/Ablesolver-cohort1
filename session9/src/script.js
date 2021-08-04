@@ -1,16 +1,24 @@
 // const TABLE_DATA = document.getElementById('table-data')
 const TABLE_DATA = document.querySelector('#table-data')
 const PAGINATION = document.querySelector('#pagination')
-let generatedTableRows = ''
+let PER_PAGE = document.querySelector('#per_page')
 
-document.body.addEventListener('click', (event) => { //Event delegation
+let per_page = parseInt(PER_PAGE.value) || 10;
+
+PER_PAGE.onblur =() => {
+    per_page= parseInt(PER_PAGE.value);
+    retrieveWithPagination(1, per_page);
+}
+
+document.body.onclick = (event) => { //Event delegation
   // console.log(event.target.dataset.page)
   if (event.target.dataset.page) {
     let { page } = event.target.dataset;
-    retrieveWithPagination(page)
+     per_page = parseInt(document.querySelector('#per_page').value) || per_page;
+    retrieveWithPagination(page, per_page)
     // console.log(page);
   }
-})
+}
 
 /** 
 * Read this resource https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch and 
@@ -18,8 +26,8 @@ document.body.addEventListener('click', (event) => { //Event delegation
 */
 let todos = []
 
-let retrieveWithPagination = (page = 1) => {
-  let buttons = "";
+let retrieveWithPagination = (page = 1, numberOfItemsPerPage=10) => {
+  let buttons = "" , generatedTableRows=" ";
 
   fetch("https://jsonplaceholder.typicode.com/todos") // Retrieve todos
     .then((response) => response.json())
@@ -27,11 +35,11 @@ let retrieveWithPagination = (page = 1) => {
 
       // console.log(json.length)
       // Generate pagination
-      let numberOfItemsPerPage = 10;
+      // let numberOfItemsPerPage = 10;
       const MAX_PAGES = Math.floor(json.length / numberOfItemsPerPage);
-      let index = page;
-    
-      todos = json.slice(index - 1, numberOfItemsPerPage);
+
+      const START_POSITION =(page - 1) * numberOfItemsPerPage;
+      todos = json.slice(START_POSITION).slice(0,numberOfItemsPerPage);
       let i = 1;
 
       while (i < MAX_PAGES) {
@@ -40,7 +48,7 @@ let retrieveWithPagination = (page = 1) => {
         i++;
       }
     }).then(() => {
-
+        //console.log(todos)
       if (todos && todos.length > 0) {
         // Check whether there are some todos
 
@@ -78,3 +86,5 @@ let retrieveWithPagination = (page = 1) => {
 }
 
 retrieveWithPagination()
+
+
