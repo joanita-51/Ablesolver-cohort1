@@ -1,3 +1,5 @@
+
+
 // const TABLE_DATA = document.getElementById('table-data')
 const TABLE_DATA = document.querySelector('#table-data')
 const PAGINATION = document.querySelector('#pagination')
@@ -87,4 +89,73 @@ let retrieveWithPagination = (page = 1, numberOfItemsPerPage=10) => {
 
 retrieveWithPagination()
 
+const TODO_FORM = document.querySelector('form#new-todo')
 
+if(TODO_FORM != 'undefined'){
+  let title = ''
+  TODO_FORM.addEventListener('submit', event =>{
+    event.preventDefault()
+
+    title = event.target[0].value;
+
+    if(validate(title)){
+      return
+    }
+
+    sendTodoAPI(title)
+  })
+}
+
+let sendTodoAPI =(title) =>{
+  //console.log(title);
+  fetch ("https://jsonplaceholder.typicode.com/todos",{
+    method: "POST",
+    body: JSON.stringify({
+      title,
+      userId:1,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+   .then(response => response.json())
+   .then(json => {
+     let {id} = json
+     if(id){
+       TODO_FORM.reset()
+         // TODO_FORM.classList.add('was-validated')
+         document.getElementById('todo-id').innerText = id
+        // document.getElementById('title').value = ''
+        document.getElementById('todo-alert').classList.remove('d-none').add('d-block')
+     }
+     // console.log(json)
+   })
+   .catch( error => console.log(error));
+};
+
+ function validate(title) {
+   return (title == 'undefined' ||  title.length < 3 ) ? false : true
+ }
+
+(() => {
+  "use strict";
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const FORMS = document.querySelectorAll(".needs-validation");
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(FORMS).forEach((FORM) =>{
+    FORM.addEventListener(
+      "submit",
+      (event) => {
+        if (!FORM.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        FORM.classList.add("was-validated");
+      },
+      false
+    );
+  });
+})();
