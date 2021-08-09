@@ -74,6 +74,15 @@ let retrieveWithPagination = (page = 1, numberOfItemsPerPage=10) => {
                     <td>${name}</td>
                     <td>${title}</td>
                     <td>${completed ? "Completed" : "Incomplete"}</td>
+                    <td>
+                    <div
+                      class="btn-group"
+                      role="group" aria-label="Basic example"
+                    >
+                      <button onClick="todoDelete(${id})" class="btn btn-danger">Delete</button>
+                      <button onClick="todoEdit(${id})" class="btn btn-info">Edit</button>
+                    </div>
+                  </td>
                 </tr>`; //Explain this block of code
             })
             .then(() => {
@@ -132,6 +141,155 @@ let sendTodoAPI =(title) =>{
    })
    .catch( error => console.log(error));
 };
+let todoDelete = todoID =>{
+  let confirmation = confirm(`Are you sure you want to delete item #${todoID}?`)
+  if (!confirmation) return
+
+  fetch(`https://jsonplaceholder.typicode.com/todos/${todoID}`, {
+    method: "DELETE",
+  })
+  .then((response) => response.json())
+  .then((json) => retrieveWithPagination())
+  .catch((error) => console.log(error));
+
+}
+let todoEdit = todoID => {
+  const EDIT_FORM_HOLDER = document.querySelector('#editFormHolder')
+  const TODO_EDIT_FORM = document.querySelector('#todo-edit-form') || null
+   /**
+   * How to update
+   * [X]1. Click the Edit button. To retrieve the item to be updated
+   * [X]2. If the item exists, display the item editable details in a form.
+   * [X]3. Send the updates/changes back to the API 
+   */
+  
+    fetch(`https://jsonplaceholder.typicode.com/todos/${todoID}`)
+    .then(response => response.json())
+    .then(json => {
+      let { id, userId, title, completed } = json
+
+      if (id) {
+        let form = document.createElement("form"); //<form>
+        form.id = "todo-edit-form";
+        form.classList.add("needs-validation");
+        form.method = "post";
+
+        let titleElement = document.createElement("div");
+        titleElement.classList.add("my-3");
+        let titleLabel = document.createElement("label"); //<label></label>
+        let titleLabelText = document.createTextNode("Title");
+        titleLabel.appendChild(titleLabelText); //<label>Title</label>
+
+        let inputForTitle = document.createElement("input");
+        inputForTitle.classList.add("form-control");
+        inputForTitle.id = "title";
+        inputForTitle.type = "text";
+        inputForTitle.value = title;
+        titleElement.appendChild(titleLabel);
+        titleElement.appendChild(inputForTitle);
+
+        let statusElement = document.createElement("div");
+        statusElement.classList.add("my-3");
+        let statusHeading = document.createElement("h3");
+        let statusLabelHeadingText = document.createTextNode("Completed?");
+        statusHeading.appendChild(statusLabelHeadingText);
+
+        let yesRadioElement = document.createElement("div");
+        yesRadioElement.classList.add("form-check");
+        yesRadioElement.classList.add("form-check-inline");
+
+        let yesRadioInput = document.createElement("input");
+        yesRadioInput.type = "radio";
+        yesRadioInput.classList.add("form-check-input");
+        yesRadioInput.name = "todostatus";
+        yesRadioInput.id = "yes";
+        yesRadioInput.value = 1;
+        yesRadioInput.checked = completed && true;
+
+        let yesRadioLabel = document.createElement("label");
+        let yesRadioLabelText = document.createTextNode("Yes");
+        yesRadioLabel.appendChild(yesRadioLabelText);
+        yesRadioLabel.htmlFor = "yes";
+
+        yesRadioElement.appendChild(yesRadioInput);
+        yesRadioElement.appendChild(yesRadioLabel);
+
+        let noRadioElement = document.createElement("div");
+        noRadioElement.classList.add("form-check");
+        noRadioElement.classList.add("form-check-inline");
+
+        let noRadioInput = document.createElement("input");
+        noRadioInput.type = "radio";
+        noRadioInput.classList.add("form-check-input");
+        noRadioInput.name = "todostatus";
+        noRadioInput.id = "no";
+        noRadioInput.value = 0;
+        noRadioInput.checked = !completed && true;
+
+        let noRadioLabel = document.createElement("label");
+        let noRadioLabelText = document.createTextNode("No");
+        noRadioLabel.appendChild(noRadioLabelText);
+        noRadioLabel.htmlFor = "no";
+
+        noRadioElement.appendChild(noRadioInput);
+        noRadioElement.appendChild(noRadioLabel);
+
+        statusElement.appendChild(statusHeading);
+        statusElement.appendChild(yesRadioElement);
+        statusElement.appendChild(noRadioElement);
+
+        let submitBtn = document.createElement("button");
+        submitBtn.type = "submit";
+        submitBtn.classList.add("btn");
+        submitBtn.classList.add("btn-primary");
+        let submitBtnText = document.createTextNode("Apply changes");
+        submitBtn.appendChild(submitBtnText);
+
+        form.appendChild(titleElement);
+        form.appendChild(statusElement);
+        form.appendChild(submitBtn);
+
+        TODO_EDIT_FORM != null && EDIT_FORM_HOLDER.removeChild(TODO_EDIT_FORM);
+
+        EDIT_FORM_HOLDER.appendChild(form);
+
+        form.onsubmit = (event) => {
+          event.preventDefault();
+          const TODO_EDIT_FORM =
+            document.querySelector("#todo-edit-form") || null;
+          //console.log(TODO_EDIT_FORM);
+          let title = event.target[0].value;
+          let yes = event.target[1].checked;
+
+          fetch(`https://jsonplaceholder.typicode.com/todo/${todoID}`, {
+            method: "PUT",
+            body: JSON.stringify({
+              id: todoID,
+              title: (title != '' || title.length > 3) && title,
+              completed: yes ? true: false,
+              userId,
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          })
+            .then((response) => response.json())
+            .then((json) => {
+              // console.log(json)
+              if (json.id) {
+                TODO_EDIT_FORM != null && EDIT_FORM_HOLDER.removeChild(TODO_EDIT_FORM);
+                alert(`Viola! #${todoID} is updated to ${json.title}`)
+              }
+              }).catch(error => console.error(error))
+        };
+      }
+
+      // console.log(json)
+    })
+
+  // console.log(todoID)
+  
+}
 
  function validate(title) {
    return (title == 'undefined' ||  title.length < 3 ) ? false : true
@@ -159,3 +317,4 @@ let sendTodoAPI =(title) =>{
     );
   });
 })();
+// You can also do API calls using a JavaScript known as Axios
