@@ -44,7 +44,7 @@ let retrieveWithPagination = (page = 1, numberOfItemsPerPage=10) => {
       todos = json.slice(START_POSITION).slice(0,numberOfItemsPerPage);
       let i = 1;
 
-      while (i < MAX_PAGES) {
+      while (i <= MAX_PAGES) {
         //Generate buttons
         buttons += `<button data-page="${i}" >${i}</button>`
         i++;
@@ -107,7 +107,7 @@ if(TODO_FORM != 'undefined'){
 
     title = event.target[0].value;
 
-    if(validate(title)){
+    if(!validate(title)){
       return
     }
 
