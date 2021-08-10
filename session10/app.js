@@ -14,8 +14,8 @@ const SERVER = HTTP.createServer((request, response) =>{
     // -> yarn add dotenv or npm add dotenv
     // -> require('dotenv').config() recommended be added at the top of the file
     //Tip: Always ignore the .env and node_modules using .gitignore feature
-    let { SALT } = process.env
-    response.end(`${SALT}\n ${process.env.PUBLIC_KEY}`)
+    let { APP_NAME } = process.env
+    response.end(`${APP_NAME}\n ${process.env.PUBLIC_KEY}`)
     
 
     
