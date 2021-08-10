@@ -15,10 +15,9 @@ const SERVER = HTTP.createServer((request, response) =>{
     // -> require('dotenv').config() recommended be added at the top of the file
     //Tip: Always ignore the .env and node_modules using .gitignore feature
     let { SALT } = process.env
-    response.end(process.env.PUBLIC_KEY)
+    response.end(`${SALT}\n ${process.env.PUBLIC_KEY}`)
     
-    let {APP_NAME} =process.env
-    response.end(`${APP_NAME}\n ${process.env.PUBLIC_KEY}`)
+
     
 })
 
