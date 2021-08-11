@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 8888
 
 const SERVER = HTTP.createServer((request, response) =>{
     response.statusCode = 200
+    
     response.setHeader('Content-Type','text/plain')
     //To send environment variables at the process you can do 
     // ENV_NAME=ENV_VALUE node filename at the CLI
@@ -15,7 +16,7 @@ const SERVER = HTTP.createServer((request, response) =>{
     // -> require('dotenv').config() recommended be added at the top of the file
     //Tip: Always ignore the .env and node_modules using .gitignore feature
     let { APP_NAME } = process.env
-    response.end(`${APP_NAME}\n ${process.env.PUBLIC_KEY}`)
+    response.end(`${APP_NAME}\n ${process.env.PUBLIC_KEY}`) //terminating the node process
     
 
     
