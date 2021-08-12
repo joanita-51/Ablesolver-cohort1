@@ -9,6 +9,9 @@
   "author": "Joanita",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^10.0.0"
+    "chalk": "^4.1.2",
+    "dotenv": "^10.0.0",
+    "minimist": "^1.2.5",
+    "progress": "^2.0.3"
   }
 }
