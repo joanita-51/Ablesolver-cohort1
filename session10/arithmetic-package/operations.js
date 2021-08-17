@@ -12,5 +12,6 @@ exports.customMath = {
    
 }
 
+exports.something = {title: 'Test purposes'}
 
 

@@ -14,3 +14,7 @@ console.log (customMath.product([2, 2, 2]))
 
 //divide 4 /2
 console.log(customMath.division(4, 2))
+
+
+const smth = require ('./arithmetic-package/operations').something
+console.log(smth.title)
