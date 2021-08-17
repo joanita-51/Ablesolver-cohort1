@@ -11,3 +11,6 @@ console.log (customMath.subtract(2, 5))
 
 //Product of [2,2,2]
 console.log (customMath.product([2, 2, 2]))
+
+//divide 4 /2
+console.log(customMath.division(4, 2))
