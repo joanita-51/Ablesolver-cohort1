@@ -6,7 +6,7 @@ const districts = require('./Uganda-districts')
 const questions = [
     {
         type : 'list',
-        name: 'question',
+        name: 'response',
         message: 'Do you want to see the districts of Uganda?',
         choices: ['Yes', 'No']
     }
