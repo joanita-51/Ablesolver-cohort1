@@ -1,6 +1,8 @@
 const inquirer = require('inquirer')
 const districts = require('./Uganda-districts')
 
+//Describe or define the question[s] that the inquirere will use 
+//Each question is an object literal {} not objest instance
 const questions = [
     {
         type : 'list',
@@ -10,6 +12,7 @@ const questions = [
     }
 ]
 
+//Use the inquirer library to output a question  to the CLI and pick input
 inquirer.prompt(questions).then(answer => {
     let { response } = answer
     if (response == 'Yes') {
