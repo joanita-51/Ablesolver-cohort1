@@ -1,4 +1,4 @@
-const customMath = require('./arithmetic-operations').customMath
+const customMath = require('./arithmetic-package/operations').customMath
 
 //Add numbers 2 + 5 
 console.log(customMath.add(2,5))

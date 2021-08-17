@@ -7,7 +7,10 @@ exports.customMath = {
     //    return numbers.reduce((accumulator, currentValue)=> accumulator * currentValue)
     //}
     product : (numbers = []) =>
-        numbers.reduce((accumulator, currentValue) => accumulator * currentValue)
-
-    
+        numbers.reduce((accumulator, currentValue) => accumulator * currentValue),
+    division:  (num1, num2) => num1 / num2 
+   
 }
+
+
+
