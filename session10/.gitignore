@@ -1,5 +1,5 @@
 .env
-node_modules
+node_modules/
 ../session6
 ../session7
 ../session8
