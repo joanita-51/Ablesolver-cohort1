@@ -4,4 +4,10 @@ node_modules/
 ../session7
 ../session8
 ../session9
-arithmeti
+arithmetic-package
+districts
+app.js
+input-from-cli.js
+other-types-of-questions-cli.js
+process-student-names.js
+use-arithmetic-library.js
