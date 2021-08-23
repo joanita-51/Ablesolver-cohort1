@@ -1,5 +1,6 @@
 .env
 node_modules/
+../.vscode
 ../session6
 ../session7
 ../session8
