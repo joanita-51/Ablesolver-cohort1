@@ -22,3 +22,17 @@ setInterval(()=>{
 const id = setInterval(()=>{
     console.log('The set Interval message')
 },1000)
+
+setTimeout(()=>{
+    clearInterval(id)
+},4000)
+
+let count = 0
+const interval = setInterval(()=>{
+    count++
+    console.log(count)
+    
+    if (count ===10){
+        clearInterval(interval)
+    }
+},1000)
