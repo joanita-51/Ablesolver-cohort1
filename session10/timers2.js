@@ -17,3 +17,8 @@ setInterval(()=>{
     let date = new Date()
     console.log(date.toLocaleTimeString())
 },1000);
+
+//To stop the interval we utilize the clearInterval by passing the ID of the setInterval()
+const id = setInterval(()=>{
+    console.log('The set Interval message')
+},1000)
