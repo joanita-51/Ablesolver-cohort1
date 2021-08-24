@@ -11,3 +11,9 @@ setTimeout(()=>{
 setTimeout(()=>{
     console.log('The second')
 },0)
+
+//SetInterval Running a callback forever on specific intervals
+setInterval(()=>{
+    let date = new Date()
+    console.log(date.toLocaleTimeString())
+},1000);
