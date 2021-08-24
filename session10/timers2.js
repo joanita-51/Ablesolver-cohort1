@@ -68,7 +68,9 @@ let index = 0
 const PAYROLL_INTERVAL_ID = setInterval(()=>{
     if (payroll[index].status == false){
 
-        console.log(`Name: ${payroll} Payment on : ${payroll[index]['paydate']} `)
+        console.log(`Name: ${payroll[index]['name']} 
+         Salary :${payroll[index]['salary']} 
+         Payment on : ${payroll[index]['paydate']} `)
         payroll[index]['status']=true
     }
     index++
