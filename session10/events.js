@@ -1,5 +1,5 @@
 const EVENTS_EMITTER = require('events')
-const EVENTS_EMITTER = new EVENTS_EMITTER()
+const EVENTS_EMIT = new EVENTS_EMITTER()
 
 //1. Handle the event or listen
 
