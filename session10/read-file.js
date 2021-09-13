@@ -11,3 +11,11 @@ fs.readFile (PATH, 'utf-8', (err, data)=>{
     }
     console.log(data)
 })
+/**
+ * Test asynchronous
+ * The line of code below will be output first because asynchronous dosen't block the thread.
+ * Yet the code from :7 to :13 is asynchronousand will take more time to execute than the line below
+ */
+console.log ('After file reading')
+
+//
