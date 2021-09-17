@@ -25,3 +25,6 @@ file-manage.js
 file-path.js
 file-stats.js
 test.txt
+server.js
+read-file.js
+file-path-2.js
