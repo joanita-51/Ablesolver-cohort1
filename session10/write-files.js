@@ -30,3 +30,14 @@ try{
     console.error(err)
 }
 
+let content2 = '\n And this must not overwrite the content too but we desire to read from the file as well.\n'
+
+try {
+    //Append to the file instead of overwriting it's content.
+    fs.writeFileSync(filepath, content2, {flag:'a'})
+    //file written successfully
+    console.log('Yes!\n You have written to the file.')
+    
+} catch (err) {
+    console.error(err)
+}
