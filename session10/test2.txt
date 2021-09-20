@@ -1,3 +1,0 @@
-This is written synchronously and the path has been generated with path module. 
- C:\Users\Joanita\Desktop\WORK SPACE\Solver Cohort 1\JS sessions\session10\test2.txt
- And this must not overwrite the content too but we desire to read from the file as well.

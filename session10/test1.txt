@@ -1,1 +1,0 @@
-This is written using NodeJS fs.writeFile() API
