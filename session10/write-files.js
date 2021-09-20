@@ -41,3 +41,5 @@ try {
 } catch (err) {
     console.error(err)
 }
+
+//Challenge : Use the fs.appendfile() and the fs.appendFileSync to practise appending to the existing files
