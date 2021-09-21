@@ -32,3 +32,5 @@ converttophp.js
 test1.txt
 test2.txt
 write-files.js
+using-buffer.js
+http-module.js
