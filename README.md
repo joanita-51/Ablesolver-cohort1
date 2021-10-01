@@ -1,2 +1,2 @@
-# session6-testing
+# Ablestate Solver Cohort 1
 Testing using npm
